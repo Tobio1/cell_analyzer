@@ -222,16 +222,22 @@ class CellAnalyzer(object):
         else:
             return
 
+        print '\n[DEBUG] check interesting pixel position (height %d width %d) in %s function...' % (height, width, sys._getframe().f_code.co_name)
+        raw_input( "[DEBUG] press key to continue" )
+
         #down
         if (height < (threshold_image.height - 1) and cell_mark_map[height + 1][width] == 0):
+            print '[DEBUG] go DOWN to pixel position (height %d width %d)...' % (height + 1, width)
             self.__find_neighbors(height + 1, width, threshold_image, cell_mark_map, cell_object)
 
         #right
         if (width < (threshold_image.width - 1) and cell_mark_map[height][width + 1] == 0):
+            print '[DEBUG] go RIGHT to pixel position (height %d width %d)...' % (height, width + 1)
             self.__find_neighbors(height, width + 1, threshold_image, cell_mark_map, cell_object)
 
         #up
         if (height > 0 and cell_mark_map[height - 1][width] == 0):
+            print '[DEBUG] go UP to pixel position (height %d width %d)...' % (height - 1, width)
             self.__find_neighbors(height - 1, width, threshold_image, cell_mark_map, cell_object)
 
 
